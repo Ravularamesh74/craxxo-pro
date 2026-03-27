@@ -13,7 +13,14 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Space Grotesk", "system-ui", "sans-serif"],
+      },
       colors: {
+        "glow-orange": "hsl(var(--glow-orange))",
+        "glow-blue": "hsl(var(--glow-blue))",
+        "surface-glass": "hsl(var(--surface-glass))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
