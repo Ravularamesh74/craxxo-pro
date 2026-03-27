@@ -86,7 +86,15 @@
   .gradient-border {
     position: relative;
   }
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
 
+.animate-gradient {
+  background-size: 200%;
+  animation: gradientMove 6s linear infinite;
+}
   .gradient-border::before {
     content: '';
     position: absolute;
@@ -147,5 +155,70 @@
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  @keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 20s) linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+.animate-gradient {
+  background-size: 200%;
+  animation: gradientMove 6s linear infinite;
+
+}
+/* 🔥 Glitch Effect */
+.glitch {
+  position: relative;
+  color: white;
+}
+
+.glitch::before,
+.glitch::after {
+  content: "404";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  animation: glitchTop 2s infinite linear;
+  color: #ff00ff;
+  top: -2px;
+}
+
+.glitch::after {
+  animation: glitchBottom 2s infinite linear;
+  color: #00ffff;
+  top: 2px;
+}
+
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 90% 0); }
+  50% { clip-path: inset(10% 0 40% 0); }
+  100% { clip-path: inset(0 0 90% 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip-path: inset(90% 0 0 0); }
+  50% { clip-path: inset(40% 0 10% 0); }
+  100% { clip-path: inset(90% 0 0 0); }
+}
+}
+
+

@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Craxxo-Pro
 
 TODO: Document your project here
