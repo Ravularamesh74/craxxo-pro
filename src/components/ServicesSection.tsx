@@ -138,7 +138,15 @@ const TiltCard = ({ icon: Icon, name, desc, delay, img }: any) => {
       </div>
 
       {/* 🌈 Animated border */}
-      <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-primary via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
+      <div 
+        className="absolute inset-0 rounded-2xl border-2 border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
+        style={{
+          background: "linear-gradient(to right, hsl(var(--primary)), #a855f7, #ec4899) border-box",
+          WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+          WebkitMaskComposite: "xor",
+          maskComposite: "exclude",
+        }}
+      />
 
       <div className="relative z-10 pointer-events-none">
         <div className="w-12 h-12 mb-3 flex items-center justify-center rounded-xl bg-primary/20 backdrop-blur-md group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
