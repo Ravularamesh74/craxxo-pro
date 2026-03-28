@@ -1,8 +1,12 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Shield, Clock, Users } from "lucide-react";
-import aboutImg from "@/assets/about.png";
 
+// ✅ Use RELATIVE PATH (works everywhere: local + deploy)
+import aboutImg from "../assets/about.png";
+import repair from "../assets/repair.png";
+import repair2 from "../assets/repair2.jpg";
+import repair3 from "../assets/repair3.jpg";
 /* ================= COUNTER HOOK ================= */
 
 const useCounter = (end: number, duration = 2000) => {
@@ -36,20 +40,14 @@ const stats = [
   { icon: Shield, value: 6, suffix: " mo", label: "Warranty" },
 ];
 
-const team = [
-  { name: "Ramesh", role: "Founder", img: "/team1.jpg" },
-  { name: "Arjun", role: "Technician", img: "/team2.jpg" },
-  { name: "Kiran", role: "Support", img: "/team3.jpg" },
-];
-
 /* ================= MAIN ================= */
 
 const AboutUs = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const rotateX = useTransform(y, [-100, 100], [5, -5]);
-  const rotateY = useTransform(x, [-100, 100], [-5, 5]);
+  const rotateX = useTransform(y, [-100, 100], [6, -6]);
+  const rotateY = useTransform(x, [-100, 100], [-6, 6]);
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
@@ -62,11 +60,11 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <section className="relative py-28 overflow-hidden">
+    <section className="relative py-28 overflow-hidden bg-background">
 
-      {/* 🌌 Background */}
+      {/* 🌌 Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-[700px] h-[700px] bg-primary/10 blur-[150px] rounded-full left-1/2 -translate-x-1/2" />
+        <div className="absolute w-[700px] h-[700px] bg-primary/10 blur-[140px] rounded-full left-1/2 -translate-x-1/2" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 space-y-24">
@@ -75,33 +73,57 @@ const AboutUs = () => {
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold">
             We Fix Devices,{" "}
-            <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient">
+            <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
               We Build Trust
             </span>
           </h2>
         </motion.div>
 
-        {/* 🔥 3D IMAGE + TEXT */}
+        {/* 🔥 IMAGE + TEXT */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
+          {/* 🖼️ IMAGE SECTION (TOP 0.1% UI) */}
           <motion.div
             style={{ rotateX, rotateY }}
-            className="rounded-2xl overflow-hidden"
+            className="relative rounded-2xl overflow-hidden group"
           >
             <img
               src={aboutImg}
-              className="w-full h-full object-cover"
+              alt="About"
+              className="
+                w-full h-full object-cover
+                transition-transform duration-700
+                group-hover:scale-110
+              "
             />
+
+            {/* Glow */}
+            <div className="
+              absolute inset-0 opacity-0 group-hover:opacity-100
+              bg-[radial-gradient(circle,rgba(255,255,255,0.15),transparent)]
+              transition duration-500
+            " />
+
+            {/* Border Glow */}
+            <div className="
+              absolute inset-0 rounded-2xl
+              border border-white/10
+              group-hover:border-primary/40
+              transition duration-500
+            " />
           </motion.div>
 
+          {/* 📝 TEXT */}
           <div className="space-y-6">
-            <p className="text-muted-foreground">
-              FixHub delivers fast, reliable repair services at your doorstep.
-              From screens to motherboard repairs, we ensure quality and trust.
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              We provide fast, reliable mobile repair services at your doorstep.
+              From screen replacements to motherboard repairs, our certified
+              technicians ensure quality, transparency, and trust.
             </p>
 
             {/* 📊 COUNTERS */}
@@ -112,7 +134,7 @@ const AboutUs = () => {
                 return (
                   <div
                     key={label}
-                    className="text-center p-4 rounded-xl bg-card/40 border border-border"
+                    className="text-center p-4 rounded-xl bg-card/40 border border-border hover:border-primary/40 transition"
                   >
                     <Icon className="w-5 h-5 text-primary mx-auto mb-1" />
                     <div className="font-bold text-lg">
@@ -129,37 +151,18 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/* 👥 TEAM SECTION */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-8 text-center">
-            Meet Our Team
-          </h3>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {team.map((member, i) => (
-              <motion.div
-                key={member.name}
-                whileHover={{ scale: 1.05 }}
-                className="group relative rounded-2xl overflow-hidden border border-border"
-              >
-                <img
-                  src={member.img}
-                  className="w-full h-64 object-cover"
-                />
-
-                {/* overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center">
-                  <h4 className="text-white font-semibold">
-                    {member.name}
-                  </h4>
-                  <p className="text-sm text-gray-300">
-                    {member.role}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        {/* 🔥 MULTI IMAGE GRID (PREMIUM LOOK) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[aboutImg, repair, repair2, repair3].map((img, i) => (
+            <motion.img
+              key={i}
+              src={img}
+              whileHover={{ scale: 1.05 }}
+              className="rounded-2xl object-cover h-40 w-full border border-border"
+            />
+          ))}
         </div>
+
       </div>
     </section>
   );

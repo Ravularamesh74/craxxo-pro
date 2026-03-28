@@ -11,13 +11,18 @@ import {
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect } from "react";
 
+import iphoneImg from "../assets/Apple.jpg";
+import androidImg from "../assets/Samsung.jpg";
+import tabletImg from "../assets/repair.png";
+import watchImg from "../assets/repair2.jpg";
+
 /* ================= DATA ================= */
 
 const devices = [
-  { icon: Smartphone, name: "iPhone", desc: "Screen, battery, camera & more" },
-  { icon: TabletSmartphone, name: "Android", desc: "All major brands supported" },
-  { icon: Monitor, name: "iPad / Tablet", desc: "Screen & diagnostics" },
-  { icon: Watch, name: "Smartwatch", desc: "All smart wearables" },
+  { icon: Smartphone, name: "iPhone", desc: "Screen, battery, camera & more", img: iphoneImg },
+  { icon: TabletSmartphone, name: "Android", desc: "All major brands supported", img: androidImg },
+  { icon: Monitor, name: "iPad / Tablet", desc: "Screen & diagnostics", img: tabletImg },
+  { icon: Watch, name: "Smartwatch", desc: "All smart wearables", img: watchImg },
 ];
 
 const repairs = [
@@ -99,7 +104,7 @@ export default ServicesSection;
 
 /* ================= TILT CARD ================= */
 
-const TiltCard = ({ icon: Icon, name, desc, delay }: any) => {
+const TiltCard = ({ icon: Icon, name, desc, delay, img }: any) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -124,18 +129,24 @@ const TiltCard = ({ icon: Icon, name, desc, delay }: any) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: delay * 0.1 }}
       whileHover={{ scale: 1.05 }}
-      className="relative group p-8 rounded-2xl border border-border bg-card/40 backdrop-blur-xl text-center overflow-hidden"
+      className="relative group p-6 rounded-2xl border border-border overflow-hidden h-[240px] flex flex-col justify-end text-left cursor-pointer"
     >
-      {/* 🌈 Animated border */}
-      <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-primary via-purple-500 to-pink-500 animate-gradient" />
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img src={img} alt={name} className="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-90 transition-all duration-700" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+      </div>
 
-      <div className="relative z-10">
-        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-xl bg-primary/10 group-hover:shadow-lg group-hover:shadow-primary/30 transition">
-          <Icon className="w-8 h-8 text-primary group-hover:scale-110 transition" />
+      {/* 🌈 Animated border */}
+      <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-primary via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10" />
+
+      <div className="relative z-10 pointer-events-none">
+        <div className="w-12 h-12 mb-3 flex items-center justify-center rounded-xl bg-primary/20 backdrop-blur-md group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+          <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
         </div>
 
-        <h3 className="font-semibold text-lg">{name}</h3>
-        <p className="text-sm text-muted-foreground">{desc}</p>
+        <h3 className="font-bold text-xl mb-1 text-white">{name}</h3>
+        <p className="text-xs text-gray-300">{desc}</p>
       </div>
     </motion.div>
   );

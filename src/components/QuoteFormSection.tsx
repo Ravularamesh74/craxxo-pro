@@ -156,7 +156,7 @@ const QuoteFormSection = () => {
 
           {/* RIGHT PANEL */}
           <div className="lg:col-span-2 space-y-6">
-            <Card icon={Phone} text="888-482-7842" />
+            <Card icon={Phone} text="9640059577" />
             <Card icon={Mail} text="info@fixhub.com" />
             <Card icon={MapPin} text="Hyderabad | Bengaluru | Mumbai" />
 
