@@ -2,9 +2,9 @@ import { MapPin, Truck, Store, CheckCircle2 } from "lucide-react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect } from "react";
 
-import doorstepImg from "@/assets/doorstep-service.jpg";
-import pickupImg from "@/assets/pickup-delivery.jpg";
-import walkinImg from "@/assets/walkin-store.jpg";
+const doorstepImg = "/assets/doorstep-service.jpg";
+const pickupImg = "/assets/pickup-delivery.jpg";
+const walkinImg = "/assets/walkin-store.jpg";
 
 const options = [
   {

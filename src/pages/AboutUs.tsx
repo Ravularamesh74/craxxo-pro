@@ -2,11 +2,11 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Shield, Clock, Users } from "lucide-react";
 
-// ✅ Use RELATIVE PATH (works everywhere: local + deploy)
-import aboutImg from "../assets/about.png";
-import repair from "../assets/repair.png";
-import repair2 from "../assets/repair2.jpg";
-import repair3 from "../assets/repair3.jpg";
+// ✅ Use absolute path from public directory
+const aboutImg = "/assets/about.png";
+const repair = "/assets/repair.png";
+const repair2 = "/assets/repair2.jpg";
+const repair3 = "/assets/repair3.jpg";
 /* ================= COUNTER HOOK ================= */
 
 const useCounter = (end: number, duration = 2000) => {

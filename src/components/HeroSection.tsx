@@ -2,7 +2,7 @@ import { ArrowRight, Shield, Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect } from "react";
-import heroImg from "@/assets/hero-repair.jpg";
+const heroImg = "/assets/hero-repair.jpg";
 
 const stats = [
   { icon: Shield, label: "6 Month Warranty", value: "100%" },

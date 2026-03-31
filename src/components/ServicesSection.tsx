@@ -11,10 +11,11 @@ import {
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect } from "react";
 
-import iphoneImg from "../assets/Apple.jpg";
-import androidImg from "../assets/Samsung.jpg";
-import tabletImg from "../assets/repair.png";
-import watchImg from "../assets/repair2.jpg";
+// ✅ Use absolute path from public directory
+const iphoneImg = "/assets/apple.jpg";
+const androidImg = "/assets/samsung.jpg";
+const tabletImg = "/assets/repair.png";
+const watchImg = "/assets/repair2.jpg";
 
 /* ================= DATA ================= */
 
