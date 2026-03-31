@@ -1,31 +1,18 @@
 import { useRef, useEffect } from "react";
 
-import appleImg from "../assets/Apple.jpg";
-import samsungImg from "../assets/Samsung.jpg";
-import googleImg from "../assets/Google.jpg";
-import vivoImg from "../assets/Vivo.jpg";
-import onePlusImg from "../assets/onepluse.jpg";
-import oppoImg from "../assets/oppo.jpg";
-import realmeImg from "../assets/realme.jpg";
-import xiaomiImg from "../assets/xiaomi.jpg";
-import motorolaImg from "../assets/motorola.jpg";
-import huaweiImg from "../assets/huawei.jpg";
-import pocoImg from "../assets/poco.jpg";
-import nothingImg from "../assets/nothing.jpg";
-
 const brandImages: Record<string, string> = {
-  Apple: appleImg,
-  Samsung: samsungImg,
-  Google: googleImg,
-  OnePlus: onePlusImg,
-  Xiaomi: xiaomiImg,
-  Oppo: oppoImg,
-  Vivo: vivoImg,
-  Realme: realmeImg,
-  Motorola: motorolaImg,
-  Huawei: huaweiImg,
-  Poco: pocoImg,
-  Nothing: nothingImg,
+  Apple: "/assets/apple.jpg",
+  Samsung: "/assets/samsung.jpg",
+  Google: "/assets/google.jpg",
+  OnePlus: "/assets/oneplus.jpg",
+  Xiaomi: "/assets/xiaomi.jpg",
+  Oppo: "/assets/oppo.jpg",
+  Vivo: "/assets/vivo.jpg",
+  Realme: "/assets/realme.jpg",
+  Motorola: "/assets/motorola.jpg",
+  Huawei: "/assets/huawei.jpg",
+  Poco: "/assets/poco.jpg",
+  Nothing: "/assets/nothing.jpg",
 };
 
 const brands = Object.keys(brandImages);
